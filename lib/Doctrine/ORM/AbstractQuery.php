@@ -796,6 +796,7 @@ abstract class AbstractQuery
      * Alias for execute(null, HYDRATE_ARRAY).
      *
      * @return mixed[]
+     * @psalm-return array<int, array<array-key, scalar|object|null>>
      */
     public function getArrayResult()
     {
@@ -807,7 +808,8 @@ abstract class AbstractQuery
      *
      * Alias for execute(null, HYDRATE_SCALAR).
      *
-     * @return mixed[]
+     * @return mixed[][]
+     * @psalm-return array<int, array<array-key, scalar|null>>
      */
     public function getScalarResult()
     {
@@ -820,6 +822,7 @@ abstract class AbstractQuery
      * @param string|int $hydrationMode
      *
      * @return mixed
+     * @psalm-return object|scalar|scalar[]|null
      *
      * @throws NonUniqueResultException
      */
@@ -857,6 +860,7 @@ abstract class AbstractQuery
      * @param string|int $hydrationMode
      *
      * @return mixed
+     * @psalm-return object|scalar[]|null
      *
      * @throws NonUniqueResultException If the query result is not unique.
      * @throws NoResultException        If the query returned no result and hydration mode is not HYDRATE_SINGLE_SCALAR.
@@ -886,6 +890,7 @@ abstract class AbstractQuery
      * Alias for getSingleResult(HYDRATE_SINGLE_SCALAR).
      *
      * @return mixed The scalar result.
+     * @psalm-return scalar|null
      *
      * @throws NoResultException        If the query returned no result.
      * @throws NonUniqueResultException If the query result is not unique.
